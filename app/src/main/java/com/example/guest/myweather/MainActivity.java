@@ -33,7 +33,8 @@ public class MainActivity extends AppCompatActivity {
     call.enqueue(new Callback() {
         @Override
         public void onFailure (Request request, IOException e){
-
+            AlertDialogFragment dialog = new AlertDialogFragment();
+            dialog.show(getFragmentManager(), "error_dialog");
         }
 
         @Override
