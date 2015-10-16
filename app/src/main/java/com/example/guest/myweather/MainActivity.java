@@ -4,17 +4,20 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
 import java.io.IOException;
 import com.squareup.okhttp.Call;
+import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
-import javax.security.auth.callback.Callback;
+import java.io.IOException;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,8 +34,6 @@ public class MainActivity extends AppCompatActivity {
     String forecastURL = "https://api.forecast.io/forecast/"+ apiKey +"/"+ latitude +","+ longitude;
 
     if(isNetworkAvailable()){
-
-
 
     OkHttpClient client = new OkHttpClient();
     Request request = new Request.Builder()
@@ -65,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
     }); // end of call.enqueue
 
     } else {
-        Toast.makeText(this, getString(R.string.network_unavailable_message), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, getString(R.string.network_unavailable_message), Toast.LENGTH_LONG).show();
 
     } // end of isNetworkAvailable if_else
 
