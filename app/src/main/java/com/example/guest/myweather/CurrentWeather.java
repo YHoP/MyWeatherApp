@@ -5,6 +5,7 @@ package com.example.guest.myweather;
  */
 public class CurrentWeather {
     private String mIcon;
+    private double mHumidity;
     private long mTime;
     private double mTemperature;
     private double mPrecipChance;
@@ -48,5 +49,13 @@ public class CurrentWeather {
 
     public void setSummary(String summary) {
         mSummary = summary;
+    }
+
+    public double getHumidity() {
+        return mHumidity;
+    }
+
+    public void setHumidity(double humidity) {
+        mHumidity = humidity;
     }
 }
