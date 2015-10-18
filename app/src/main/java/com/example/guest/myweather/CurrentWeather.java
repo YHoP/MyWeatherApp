@@ -20,7 +20,7 @@ public class CurrentWeather {
 
     public void setTimeZone(String timeZone) { mTimeZone = timeZone; }
 
-    public int getIcon() {
+    public int getIconId() {
         // clear-day, clear-night, rain, snow, sleet, wind, fog, cloudy, partly-cloudy-day, or partly-cloudy-night
         int iconId = R.mipmap.clear_day;
 
@@ -49,7 +49,7 @@ public class CurrentWeather {
         return iconId;
     }
 
-    public void setIcon(String icon) {
+    public void setIconId(String icon) {
         mIcon = icon;
     }
 
@@ -69,16 +69,17 @@ public class CurrentWeather {
         return timeString;
     }
 
-    public double getTemperature() {
-        return mTemperature;
+    public int getTemperature() {
+        return (int) Math.round(mTemperature);
     }
 
     public void setTemperature(double temperature) {
         mTemperature = temperature;
     }
 
-    public double getPrecipChance() {
-        return mPrecipChance;
+    public int getPrecipChance() {
+        double precipPrecentage = mPrecipChance * 100;
+        return (int) Math.round(precipPrecentage);
     }
 
     public void setPrecipChance(double precipChance) {
