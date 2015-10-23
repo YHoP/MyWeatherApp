@@ -1,4 +1,6 @@
-package com.example.guest.myweather;
+package com.example.guest.myweather.weather;
+
+import com.example.guest.myweather.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

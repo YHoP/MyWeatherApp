@@ -1,10 +1,12 @@
-package com.example.guest.myweather;
+package com.example.guest.myweather.ui;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Context;
 import android.os.Bundle;
+
+import com.example.guest.myweather.R;
 
 /**
  * Created by YHoP on 10/15/15.
