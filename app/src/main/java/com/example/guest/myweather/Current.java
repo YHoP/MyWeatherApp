@@ -7,7 +7,7 @@ import java.util.TimeZone;
 /**
  * Created by YHoP on 10/16/15.
  */
-public class CurrentWeather {
+public class Current {
     private String mIcon;
     private double mHumidity;
     private long mTime;
