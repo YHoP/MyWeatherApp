@@ -5,17 +5,15 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Bundle;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
-import android.widget.TextView;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-
-import java.io.IOException;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.guest.myweather.R;
 import com.example.guest.myweather.weather.Current;
@@ -32,14 +30,17 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import butterknife.ButterKnife;
+import java.io.IOException;
+
 import butterknife.Bind;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 
 public class MainActivity extends AppCompatActivity {
 
     public static final String TAG = MainActivity.class.getSimpleName();
+    public static final String DAILY_FORECAST = "DAILY_FORECAST";
 
     // private Current mCurrent;
     private Forecast mForecast;
@@ -84,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
         if(isNetworkAvailable()){
             toggleRefresh();
         OkHttpClient client = new OkHttpClient();
-        Request request = new Request.Builder()
+            Request request = new Request.Builder()
                 .url(forecastURL)
                 .build();
         Call call = client.newCall(request);
