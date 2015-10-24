@@ -1,17 +1,15 @@
-package com.example.guest.myweather.ui;
+package com.example.yhop.myweather.ui;
 
 import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.widget.ArrayAdapter;
+import android.os.Parcelable;
 
-import com.example.guest.myweather.R;
-import com.example.guest.myweather.adapter.DayAdapter;
-import com.example.guest.myweather.weather.Day;
+import com.example.yhop.myweather.R;
+import com.example.yhop.myweather.adapter.DayAdapter;
+import com.example.yhop.myweather.weather.Day;
+
+import java.util.Arrays;
 
 public class DailyForecastActivity extends ListActivity {
 
@@ -20,11 +18,15 @@ public class DailyForecastActivity extends ListActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_daily_fprecast);
+        setContentView(R.layout.activity_daily_forecast);
 
         // String[] daysOfTheWeek = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
         // ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, daysOfTheWeek);
         // setListAdapter(adapter);
+
+        Intent intent = getIntent();
+        Parcelable[] parcelables = intent.getParcelableArrayExtra(MainActivity.DAILY_FORECAST);
+        mDays = Arrays.copyOf(parcelables, parcelables.length, Day[].class);
 
         DayAdapter adapter = new DayAdapter(this, mDays);
     }

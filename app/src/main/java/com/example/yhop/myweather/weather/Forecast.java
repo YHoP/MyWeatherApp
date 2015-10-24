@@ -1,6 +1,6 @@
-package com.example.guest.myweather.weather;
+package com.example.yhop.myweather.weather;
 
-import com.example.guest.myweather.R;
+import com.example.yhop.myweather.R;
 
 /**
  * Created by YHoP on 10/23/15.

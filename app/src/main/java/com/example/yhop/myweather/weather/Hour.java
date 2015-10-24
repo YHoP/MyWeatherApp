@@ -1,4 +1,4 @@
-package com.example.guest.myweather.weather;
+package com.example.yhop.myweather.weather;
 
 /**
  * Created by YHoP on 10/23/15.

@@ -1,4 +1,4 @@
-package com.example.guest.myweather.ui;
+package com.example.yhop.myweather.ui;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -6,7 +6,7 @@ import android.app.DialogFragment;
 import android.content.Context;
 import android.os.Bundle;
 
-import com.example.guest.myweather.R;
+import com.example.yhop.myweather.R;
 
 /**
  * Created by YHoP on 10/15/15.

@@ -1,4 +1,4 @@
-package com.example.guest.myweather;
+package com.example.yhop.myweather;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

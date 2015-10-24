@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.guest.myweather" >
+    package="com.example.yhop.myweather" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -11,7 +11,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".ui.MainActivity"
+            android:name="com.example.yhop.myweather.ui.MainActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
@@ -21,13 +21,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.DailyForecastActivity"
+            android:name="com.example.yhop.myweather.ui.DailyForecastActivity"
             android:label="@string/title_activity_daily_fprecast"
-            android:parentActivityName=".ui.MainActivity"
+            android:parentActivityName="com.example.yhop.myweather.ui.MainActivity"
             android:theme="@style/AppTheme" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.guest.myweather.ui.MainActivity" />
+                android:value="com.example.yhop.myweather.ui.MainActivity" />
         </activity>
     </application>
 
