@@ -55,6 +55,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.guest.myweather.ui.MainActivity" />
         </activity>
+        <activity android:name=".ui.HourlyForecastActivity" >
+        </activity>
     </application>
 
 </manifest>
