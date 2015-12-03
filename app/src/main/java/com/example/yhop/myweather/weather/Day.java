@@ -9,6 +9,7 @@ import java.util.TimeZone;
 
 
 public class Day implements Parcelable {
+
     public static final Creator<Day> CREATOR = new Creator<Day>() {
         @Override
         public Day createFromParcel(Parcel source) {
@@ -100,5 +101,4 @@ public class Day implements Parcelable {
         dest.writeString(mIcon);
         dest.writeString(mTimezone);
     }
-
 }
