@@ -1,14 +1,9 @@
-package com.example.guest.myweather.weather;
-
-import com.example.guest.myweather.R;
+package com.example.yhop.myweather.weather;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
 
-/**
- * Created by YHoP on 10/16/15.
- */
 public class Current {
     private String mIcon;
     private double mHumidity;

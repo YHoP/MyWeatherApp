@@ -1,4 +1,4 @@
-package com.example.guest.myweather.ui;
+package com.example.yhop.myweather.ui;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,11 +15,11 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.guest.myweather.R;
-import com.example.guest.myweather.weather.Current;
-import com.example.guest.myweather.weather.Day;
-import com.example.guest.myweather.weather.Forecast;
-import com.example.guest.myweather.weather.Hour;
+import com.example.yhop.myweather.R;
+import com.example.yhop.myweather.weather.Current;
+import com.example.yhop.myweather.weather.Day;
+import com.example.yhop.myweather.weather.Forecast;
+import com.example.yhop.myweather.weather.Hour;
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.OkHttpClient;
@@ -42,10 +42,6 @@ public class MainActivity extends AppCompatActivity {
     public static final String TAG = MainActivity.class.getSimpleName();
     public static final String DAILY_FORECAST = "DAILY_FORECAST";
     public static final String HOURLY_FORECAST = "HOURLY_FORECAST";
-
-    // private Current mCurrent;
-    private Forecast mForecast;
-
     @Bind(R.id.timeLabel) TextView mTimeLabel;
     @Bind(R.id.temperatureLabel) TextView mTemperatureLabel;
     @Bind(R.id.humidityValue) TextView mHumidityValue;
@@ -54,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
     @Bind(R.id.iconImageView) ImageView mIconImageView;
     @Bind(R.id.refreshImageView) ImageView mRefreshImageView;
     @Bind(R.id.progressBar) ProgressBar mProgressBar;
+    // private Current mCurrent;
+    private Forecast mForecast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -261,6 +259,7 @@ public class MainActivity extends AppCompatActivity {
     @OnClick (R.id.dailyButton)
     public void startDailyActivity(View view){
         Intent intent = new Intent(this, DailyForecastActivity.class);
+        intent.putExtra(DAILY_FORECAST, mForecast.getDailyForecast());
         startActivity(intent);
     }
 

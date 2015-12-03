@@ -1,4 +1,4 @@
-package com.example.guest.myweather.ui;
+package com.example.yhop.myweather.ui;
 
 import android.app.ListActivity;
 import android.content.Intent;
@@ -10,9 +10,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.guest.myweather.R;
-import com.example.guest.myweather.adapter.DayAdapter;
-import com.example.guest.myweather.weather.Day;
+import com.example.yhop.myweather.R;
+import com.example.yhop.myweather.adapter.DayAdapter;
+import com.example.yhop.myweather.weather.Day;
 
 import java.util.Arrays;
 
@@ -21,17 +21,16 @@ import butterknife.ButterKnife;
 
 public class DailyForecastActivity extends ListActivity {
 
-    private Day[] mDays;
-
     @Bind(android.R.id.list) ListView mListView;
     @Bind(android.R.id.empty) TextView mEmptyTextView;
-
+    private Day[] mDays;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daily_forecast);
         ButterKnife.bind(this);
+
 
         Intent intent = getIntent();
         Parcelable[] parcelables = intent.getParcelableArrayExtra(MainActivity.DAILY_FORECAST);

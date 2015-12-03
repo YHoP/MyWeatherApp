@@ -1,4 +1,4 @@
-package com.example.guest.myweather.ui;
+package com.example.yhop.myweather.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,9 +7,9 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import com.example.guest.myweather.R;
-import com.example.guest.myweather.adapter.HourAdapter;
-import com.example.guest.myweather.weather.Hour;
+import com.example.yhop.myweather.R;
+import com.example.yhop.myweather.adapter.HourAdapter;
+import com.example.yhop.myweather.weather.Hour;
 
 import java.util.Arrays;
 
@@ -18,8 +18,8 @@ import butterknife.ButterKnife;
 
 public class HourlyForecastActivity extends ActionBarActivity {
 
-    private Hour[] mHours;
     @Bind(R.id.reyclerView) RecyclerView mRecyclerView;
+    private Hour[] mHours;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

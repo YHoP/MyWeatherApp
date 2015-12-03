@@ -1,4 +1,4 @@
-package com.example.guest.myweather.adapter;
+package com.example.yhop.myweather.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -7,8 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.guest.myweather.R;
-import com.example.guest.myweather.weather.Hour;
+import com.example.yhop.myweather.R;
+import com.example.yhop.myweather.weather.Hour;
 
 public class HourAdapter extends RecyclerView.Adapter<HourAdapter.HourViewHolder>{
 
