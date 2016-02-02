@@ -16,6 +16,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.yhop.myweather.R;
+import com.example.yhop.myweather.Service.ServiceHelper;
+import com.example.yhop.myweather.WeatherApplication;
 import com.example.yhop.myweather.weather.Current;
 import com.example.yhop.myweather.weather.Day;
 import com.example.yhop.myweather.weather.Forecast;
@@ -71,14 +73,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+//        Log.i("API_KEY", WeatherApplication.getInstance().getApiKey());
+
+        ServiceHelper.getData(WeatherApplication.getInstance().getApiKey(), latitude, longitude);
+
         getForecast(latitude, longitude);
 
         Log.d(TAG, "Main UI code is running!");
 
     } // end of onCreate
 
+
     private void getForecast(double latitude, double longitude) {
-        String apiKey = "12cf5c054101992f485f24eceeb58e8e";
+        String apiKey = getString(R.string.api_key);
         String forecastURL = "https://api.forecast.io/forecast/"+ apiKey +"/"+ latitude +","+ longitude;
 
         if(isNetworkAvailable()){
@@ -115,7 +122,9 @@ public class MainActivity extends AppCompatActivity {
                     String jsonData = response.body().string();
                     // Response response = call.execute();
                     // Log.v(TAG, response.body().string());
-                    Log.v(TAG, jsonData);
+
+//                    Log.v(TAG, jsonData);
+
                     if (response.isSuccessful()) {
                         // mCurrent = getCurrentDetails(jsonData);
                         mForecast = parseForecastDetials(jsonData);
@@ -155,7 +164,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateDisplay() {
-        Current current = mForecast.getCurrent();
+        Current current = mForecast.getCurrently();
         mTemperatureLabel.setText(current.getTemperature()+"");
         mTimeLabel.setText("At " + current.getFormattedTime() + " it will be");
         mHumidityValue.setText(current.getHumidity() + "");
@@ -167,9 +176,9 @@ public class MainActivity extends AppCompatActivity {
 
     private Forecast parseForecastDetials(String jsonData) throws JSONException {
         Forecast forecast = new Forecast();
-        forecast.setCurrent(getCurrentDetails(jsonData));
-        forecast.setHourlyForecast(getHourlyForecast(jsonData));
-        forecast.setDailyForecast(getDailyForecast(jsonData));
+        forecast.setCurrently(getCurrentDetails(jsonData));
+        forecast.setHourly(getHourlyForecast(jsonData));
+        forecast.setDaily(getDailyForecast(jsonData));
 
         return forecast;
     }
@@ -234,7 +243,7 @@ public class MainActivity extends AppCompatActivity {
         current.setPrecipChance(currently.getDouble("precipProbability"));
         current.setSummary(currently.getString("summary"));
         current.setTemperature(currently.getDouble("temperature"));
-        current.setTimeZone(timezone);
+        current.setTimezone(timezone);
 
         Log.d(TAG, current.getFormattedTime());
 
@@ -259,14 +268,14 @@ public class MainActivity extends AppCompatActivity {
     @OnClick (R.id.dailyButton)
     public void startDailyActivity(View view){
         Intent intent = new Intent(this, DailyForecastActivity.class);
-        intent.putExtra(DAILY_FORECAST, mForecast.getDailyForecast());
+        intent.putExtra(DAILY_FORECAST, mForecast.getDaily());
         startActivity(intent);
     }
 
     @OnClick (R.id.hourlyButton)
     public void startHourlyActivity(View view) {
         Intent intent = new Intent(this, HourlyForecastActivity.class);
-        intent.putExtra(HOURLY_FORECAST, mForecast.getHourlyForecast());
+        intent.putExtra(HOURLY_FORECAST, mForecast.getHourly());
         startActivity(intent);
     }
 

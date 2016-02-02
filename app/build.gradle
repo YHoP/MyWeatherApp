@@ -17,6 +17,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    productFlavors {
+        development {
+            applicationIdSuffix ".development"
+            buildConfigField("boolean", "SHOW_VARIANT", "true")
+            resValue "string", "WEATHER_API", "https://api.forecast.io/forecast/"
+        }
+    }
 }
 
 dependencies {
@@ -27,4 +35,11 @@ dependencies {
     compile 'com.android.support:design:22.2.1'
     compile 'com.google.android.gms:play-services:8.1.0'
     compile 'com.android.support:recyclerview-v7:23.1.0'
+
+    // Retrofit
+    compile 'com.google.code.gson:gson:2.4'
+    compile 'com.squareup.retrofit:retrofit:2.0.0-beta2'
+    compile 'com.squareup.retrofit:converter-gson:2.0.0-beta2'
+    compile 'com.squareup.okhttp:okhttp:2.5.0'
+    compile 'com.squareup.okhttp:logging-interceptor:2.6.0'
 }
