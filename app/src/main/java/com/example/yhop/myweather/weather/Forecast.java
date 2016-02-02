@@ -3,9 +3,9 @@ package com.example.yhop.myweather.weather;
 import com.example.yhop.myweather.R;
 
 public class Forecast {
-    private Current mCurrent;
-    private Hour[] mHourlyForecast;
-    private Day[] mDailyForecast;
+    private Current currently;
+    private Hour[] hourly;
+    private Day[] daily;
 
     public static int getIconId(String iconString){
 
@@ -37,27 +37,27 @@ public class Forecast {
         return iconId;
     }
 
-    public Current getCurrent() {
-        return mCurrent;
+    public Current getCurrently() {
+        return currently;
     }
 
-    public void setCurrent(Current current) {
-        mCurrent = current;
+    public void setCurrently(Current current) {
+        this.currently = current;
     }
 
-    public Hour[] getHourlyForecast() {
-        return mHourlyForecast;
+    public Hour[] getHourly() {
+        return hourly;
     }
 
-    public void setHourlyForecast(Hour[] hourlyForecast) {
-        mHourlyForecast = hourlyForecast;
+    public void setHourly(Hour[] hourly) {
+        this.hourly = hourly;
     }
 
-    public Day[] getDailyForecast() {
-        return mDailyForecast;
+    public Day[] getDaily() {
+        return daily;
     }
 
-    public void setDailyForecast(Day[] dailyForecast) {
-        mDailyForecast = dailyForecast;
+    public void setDaily(Day[] daily) {
+        this.daily = daily;
     }
 }

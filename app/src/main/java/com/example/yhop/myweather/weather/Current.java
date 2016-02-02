@@ -5,70 +5,77 @@ import java.util.Date;
 import java.util.TimeZone;
 
 public class Current {
-    private String mIcon;
-    private double mHumidity;
-    private long mTime;
-    private double mTemperature;
-    private double mPrecipChance;
-    private String mSummary;
-    private String mTimeZone;
 
-    public String getTimeZone() { return mTimeZone; }
+    private String icon;
+    private double humidity;
+    private long time;
+    private double temperature;
+    private double precipChance;
+    private String summary;
+    private String timezone;
 
-    public void setTimeZone(String timeZone) { mTimeZone = timeZone; }
+    public String getTimezone() {
+        return timezone;
+    }
+
+    public void setTimezone(String timezone) {
+        this.timezone = timezone;
+    }
 
     public int getIconId() {
-        return Forecast.getIconId(mIcon);
+        return Forecast.getIconId(icon);
     }
 
     public void setIconId(String icon) {
-        mIcon = icon;
+        this.icon = icon;
     }
 
     public long getTime() {
-        return mTime;
+        return time;
     }
 
     public void setTime(long time) {
-        mTime = time;
+        this.time = time;
     }
 
     public String getFormattedTime(){
         SimpleDateFormat formatter = new SimpleDateFormat("h:mm a");
-        formatter.setTimeZone(TimeZone.getTimeZone(getTimeZone()));
+        formatter.setTimeZone(TimeZone.getTimeZone(getTimezone()));
         Date dateTime = new Date(getTime() * 1000);
         String timeString = formatter.format(dateTime);
         return timeString;
     }
 
     public int getTemperature() {
-        return (int) Math.round(mTemperature);
+        return (int) Math.round(temperature);
     }
 
     public void setTemperature(double temperature) {
-        mTemperature = temperature;
+        this.temperature = temperature;
     }
 
     public int getPrecipChance() {
-        double precipPrecentage = mPrecipChance * 100;
+        double precipPrecentage = precipChance * 100;
         return (int) Math.round(precipPrecentage);
     }
 
     public void setPrecipChance(double precipChance) {
-        mPrecipChance = precipChance;
+        this.precipChance = precipChance;
     }
 
     public String getSummary() {
-        return mSummary;
+        return summary;
     }
 
     public void setSummary(String summary) {
-        mSummary = summary;
+        this.summary = summary;
     }
 
-    public double getHumidity() { return mHumidity; }
+    public double getHumidity() {
+        return humidity;
+    }
 
     public void setHumidity(double humidity) {
-        mHumidity = humidity;
+        this.humidity = humidity;
     }
 }
