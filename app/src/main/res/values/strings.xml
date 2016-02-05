@@ -10,5 +10,4 @@
     <string name="title_activity_daily_fprecast">DailyFprecastActivity</string>
     <string name="no_daily_forecast_data">There is no data to display</string>
     <string name="title_activity_maps">Map</string>
-    <string name="api_key">12cf5c054101992f485f24eceeb58e8e</string>
 </resources>
