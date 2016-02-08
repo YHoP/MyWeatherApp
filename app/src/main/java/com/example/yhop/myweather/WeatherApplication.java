@@ -7,6 +7,7 @@ public class WeatherApplication extends Application {
     private String api_url;
     private String api_key;
 
+
     public static WeatherApplication getInstance() {
         return mApplication;
     }
@@ -24,7 +25,7 @@ public class WeatherApplication extends Application {
         super.onCreate();
         mApplication = this;
         api_url = "https://api.forecast.io/forecast/";
-        api_key = getResources().getString(R.string.api_key);
+        api_key = "12cf5c054101992f485f24eceeb58e8e";
     }
 
 

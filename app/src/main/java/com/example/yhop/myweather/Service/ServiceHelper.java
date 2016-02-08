@@ -2,6 +2,7 @@ package com.example.yhop.myweather.Service;
 
 import android.util.Log;
 
+import com.example.yhop.myweather.WeatherApplication;
 import com.example.yhop.myweather.weather.Current;
 import com.example.yhop.myweather.weather.Wraper;
 
@@ -28,13 +29,14 @@ public class ServiceHelper {
                 .build();
     }
 
-    public static Service getWeatherService(String url) {
+    public static Service getWeatherService() {
+        String url = WeatherApplication.getInstance().getApiUrl();
         return getRetrofit(url).create(Service.class);
     }
 
 
     public static void getData(String api_key, double latitude, double longitude) {
-        Call<Wraper> call = getWeatherService("https://api.forecast.io/forecast/").getWeather(api_key, latitude, longitude);
+        Call<Wraper> call = getWeatherService().getWeather(api_key, latitude, longitude);
         call.enqueue(new Callback<Wraper>() {
             @Override
             public void onResponse(Response<Wraper> response, Retrofit retrofit) {
@@ -52,6 +54,5 @@ public class ServiceHelper {
             }
         });
     }
-
 
 }

@@ -15,6 +15,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.yhop.myweather.LocationHelper;
 import com.example.yhop.myweather.R;
 import com.example.yhop.myweather.Service.ServiceHelper;
 import com.example.yhop.myweather.WeatherApplication;
@@ -45,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
     public static final String DAILY_FORECAST = "DAILY_FORECAST";
     public static final String HOURLY_FORECAST = "HOURLY_FORECAST";
     @Bind(R.id.timeLabel) TextView mTimeLabel;
+    @Bind(R.id.locationLabel)
+    TextView mLocationLabel;
     @Bind(R.id.temperatureLabel) TextView mTemperatureLabel;
     @Bind(R.id.humidityValue) TextView mHumidityValue;
     @Bind(R.id.precipValue) TextView mPrecipValue;
@@ -54,17 +57,21 @@ public class MainActivity extends AppCompatActivity {
     @Bind(R.id.progressBar) ProgressBar mProgressBar;
     // private Current mCurrent;
     private Forecast mForecast;
+    private double latitude;
+    private double longitude;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        LocationHelper locationHelper = new LocationHelper(this);
+        latitude = LocationHelper.getCurrentLatitude();
+        longitude = LocationHelper.getCurrentLongitude();
+
+        mLocationLabel.setText(LocationHelper.getCity());
 
         mProgressBar.setVisibility(View.INVISIBLE);
-
-        final double latitude = 45.5311331;
-        final double longitude = -122.6824974;
 
         mRefreshImageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,8 +92,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void getForecast(double latitude, double longitude) {
-        String apiKey = getString(R.string.api_key);
-        String forecastURL = "https://api.forecast.io/forecast/"+ apiKey +"/"+ latitude +","+ longitude;
+        String apiUrl = WeatherApplication.getInstance().getApiUrl();
+        String apiKey = WeatherApplication.getInstance().getApiKey();
+        String forecastURL = apiUrl + apiKey + "/" + latitude + "," + longitude;
 
         if(isNetworkAvailable()){
             toggleRefresh();
