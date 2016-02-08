@@ -22,7 +22,6 @@ public class LocationHelper extends Service implements LocationListener {
     private static double latitude;
     private static double longitude;
     private static String city;
-    private static String country;
     protected LocationManager locationManager;
     private Context mContext;
     private Location location;
@@ -47,10 +46,6 @@ public class LocationHelper extends Service implements LocationListener {
         return city;
     }
 
-    public static String getCountry() {
-        return country;
-    }
-
     private void getLocation() {
         if (location != null) {
             latitude = location.getLatitude();
@@ -61,7 +56,6 @@ public class LocationHelper extends Service implements LocationListener {
                 addresses = geocoder.getFromLocation(latitude, longitude, 1);
 //                city = addresses.get(0).getLocality();
                 city = addresses.get(0).getAddressLine(1);
-//                country = addresses.get(0).getAddressLine(2);
                 Log.i("City Name: ", city);
             } catch (IOException e) {
                 e.printStackTrace();
