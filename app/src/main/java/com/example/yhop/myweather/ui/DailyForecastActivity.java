@@ -10,6 +10,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.yhop.myweather.LocationHelper;
 import com.example.yhop.myweather.R;
 import com.example.yhop.myweather.adapter.DayAdapter;
 import com.example.yhop.myweather.weather.Day;
@@ -23,6 +24,8 @@ public class DailyForecastActivity extends ListActivity {
 
     @Bind(android.R.id.list) ListView mListView;
     @Bind(android.R.id.empty) TextView mEmptyTextView;
+    @Bind(R.id.locationLabel)
+    TextView mLocationLabel;
     private Day[] mDays;
 
     @Override
@@ -31,6 +34,7 @@ public class DailyForecastActivity extends ListActivity {
         setContentView(R.layout.activity_daily_forecast);
         ButterKnife.bind(this);
 
+        mLocationLabel.setText(LocationHelper.getCity());
 
         Intent intent = getIntent();
         Parcelable[] parcelables = intent.getParcelableArrayExtra(MainActivity.DAILY_FORECAST);
