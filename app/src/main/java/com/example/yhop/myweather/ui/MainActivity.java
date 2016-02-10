@@ -57,28 +57,20 @@ public class MainActivity extends AppCompatActivity {
     @Bind(R.id.progressBar) ProgressBar mProgressBar;
     // private Current mCurrent;
     private Forecast mForecast;
+    private LocationHelper locationHelper;
     private double latitude;
     private double longitude;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        LocationHelper locationHelper = new LocationHelper(this);
-        latitude = LocationHelper.getCurrentLatitude();
-        longitude = LocationHelper.getCurrentLongitude();
+        getLocation();
 
         mLocationLabel.setText(LocationHelper.getCity());
-
         mProgressBar.setVisibility(View.INVISIBLE);
-
-        mRefreshImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getForecast(latitude, longitude);
-            }
-        });
 
 //        Log.i("API_KEY", WeatherApplication.getInstance().getApiKey());
 
@@ -88,7 +80,21 @@ public class MainActivity extends AppCompatActivity {
 
         Log.d(TAG, "Main UI code is running!");
 
+        mRefreshImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getLocation();
+                getForecast(latitude, longitude);
+            }
+        });
+
     } // end of onCreate
+
+    private void getLocation() {
+        locationHelper = new LocationHelper(MainActivity.this);
+        latitude = LocationHelper.getCurrentLatitude();
+        longitude = LocationHelper.getCurrentLongitude();
+    }
 
 
     private void getForecast(double latitude, double longitude) {
